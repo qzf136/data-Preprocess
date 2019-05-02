@@ -76,7 +76,7 @@ public class Sample {
 		job.setReducerClass(Reduce.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
-        FileInputFormat.addInputPath(job, new Path("hdfs://localhost:9000/input/large_data.txt"));
+        FileInputFormat.addInputPath(job, new Path("hdfs://localhost:9000/input/large_data_utf8.txt"));
         Path outPath = new Path("hdfs://localhost:9000/output/D_Sample");
         FileSystem fs = outPath.getFileSystem(conf);
         fs.delete(outPath, true);

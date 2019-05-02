@@ -51,12 +51,12 @@ public class All {
 	}
 	
 	private static String temperatureStandard(String temperature) {
-		if ((int)temperature.charAt(temperature.length()-1) == 72) {		// 华氏度
+		if (temperature.charAt(temperature.length()-1) == '℉') {		// 华氏度
 			int len = temperature.length();
-			String valString = temperature.substring(0, len-2);
+			String valString = temperature.substring(0, len-1);
 			double tprval = Double.parseDouble(valString);
 			double newval = (tprval-32) / 1.8;
-			String temperature_new = String.format("%.1f", newval) + (char)65533 +""+ (char)65533;
+			String temperature_new = String.format("%.1f", newval) + '℃';
 			return temperature_new;
 		} else {
 			return temperature;
@@ -277,7 +277,7 @@ public class All {
 		job1.setReducerClass(Reduce1.class);
         job1.setOutputKeyClass(Text.class);
         job1.setOutputValueClass(Text.class);
-        FileInputFormat.addInputPath(job1, new Path("hdfs://localhost:9000/input/large_data.txt"));
+        FileInputFormat.addInputPath(job1, new Path("hdfs://localhost:9000/input/large_data_utf8.txt"));
         Path outPath1 = new Path("hdfs://localhost:9000/output/All1");
         FileSystem fs1 = outPath1.getFileSystem(conf);
         fs1.delete(outPath1, true);

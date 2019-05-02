@@ -112,7 +112,7 @@ public class Filter {
 	    job.setReducerClass(Reduce.class);
 	    job.setOutputKeyClass(Text.class);
 	    job.setOutputValueClass(Text.class);
-	    FileInputFormat.addInputPaths(job, "hdfs://localhost:9000/input/large_data.txt");
+	    FileInputFormat.addInputPaths(job, "hdfs://localhost:9000/input/large_data_utf8.txt");
 	    Path outPath = new Path("hdfs://localhost:9000/output/D_Filtered");
         FileSystem fs = outPath.getFileSystem(conf);
         fs.delete(outPath, true);

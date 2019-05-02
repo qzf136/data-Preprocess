@@ -35,12 +35,12 @@ public class Standard {
 	}
 	
 	private static String temperatureStandard(String temperature) {
-		if ((int)temperature.charAt(temperature.length()-1) == 72) {		// 华氏度
+		if (temperature.charAt(temperature.length()-1) == '℉') {		// 华氏度
 			int len = temperature.length();
-			String valString = temperature.substring(0, len-2);
+			String valString = temperature.substring(0, len-1);
 			double tprval = Double.parseDouble(valString);
 			double newval = (tprval-32) / 1.8;
-			String temperature_new = String.format("%.1f", newval) + (char)65533 +""+ (char)65533;
+			String temperature_new = String.format("%.1f", newval) + '℃';
 			return temperature_new;
 		} else {
 			return temperature;
